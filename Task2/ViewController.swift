@@ -19,21 +19,23 @@ class ViewController: UIViewController {
         guard let bottomText = bottomTextfield.text else { return }
         let topNumber = Double(topText) ?? 0
         let bottomNumber = Double(bottomText) ?? 0
+        let resultText:String
         switch calculationSegment.selectedSegmentIndex {
         case 0:
-            resultLabel.text = String(topNumber + bottomNumber)
+            resultText = String(topNumber + bottomNumber)
         case 1:
-            resultLabel.text = String(topNumber - bottomNumber)
+            resultText = String(topNumber - bottomNumber)
         case 2:
-            resultLabel.text = String(topNumber * bottomNumber)
+            resultText = String(topNumber * bottomNumber)
         case 3:
             if bottomNumber == 0.0 {
-                resultLabel.text = "割る数には０以外を入力して下さい"
+                resultText = "割る数には０以外を入力して下さい"
             } else {
-                resultLabel.text = String(topNumber / bottomNumber)
+                resultText = String(topNumber / bottomNumber)
             }
         default:
             return
         }
+        resultLabel.text = resultText
     }
 }
